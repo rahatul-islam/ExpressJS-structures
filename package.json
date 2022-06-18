@@ -1,0 +1,28 @@
+{
+  "name": "chapter12-project-structures",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000s\u0000t\u0000r\u0000u\u0000c\u0000t\u0000u\u0000r\u0000e\u0000s\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahat900046/structures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahat900046/structures/issues"
+  },
+  "homepage": "https://github.com/Rahat900046/structures#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
