@@ -15,6 +15,15 @@ app.get('/',(req,res)=>{
 })
 
 const PORT=process.env.PORT||8888
-app.listen(PORT,()=>{
-    console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+
+mongoose.connect(`mongodb+srv://admin24:admin3024@cluster0.kjw7f.mongodb.net/test`)
+.then(() =>{
+    app.listen(PORT,()=>{
+        console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+    })
+    
 })
+.catch(e=>{
+    console.log(e)
+})
+
