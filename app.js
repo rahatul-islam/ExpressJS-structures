@@ -11,19 +11,23 @@ app.use(express.json())
 
 // app.use('/')
 app.get('/',(req,res)=>{
-    // res.send('<h1>SERVER IS RUNNING</h1>')
+    res.send('<h1>SERVER IS RUNNING</h1>')
 })
 
 const PORT=process.env.PORT||8888
 
-mongoose.connect(`mongodb+srv://admin24:admin3024@cluster0.kjw7f.mongodb.net/test`)
-.then(() =>{
-    app.listen(PORT,()=>{
-        console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
-    })
+// mongoose.connect(`mongodb+srv://admin24:admin3024@cluster0.kjw7f.mongodb.net/test`)
+// .then(() =>{
+//     app.listen(PORT,()=>{
+//         console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+//     })
     
-})
-.catch(e=>{
-    console.log(e)
-})
+// })
+// .catch(e=>{
+//     console.log(e)
+// })
 
+
+app.listen(PORT,()=>{
+    console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+})
