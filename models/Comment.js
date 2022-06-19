@@ -2,8 +2,8 @@
 
 const{Schema,model}=require('mongoose')
 
-const User=require('./User')
 const Post=require('./Post')
+const User=require('./User')
 
 const commentSchema=newSchema({
     post:{
