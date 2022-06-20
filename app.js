@@ -4,9 +4,14 @@ const mongoose=require('mongoose')
 
 const app=express()
 
+//static file
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname+'public/css'))
+
 //setup View Engine
 app.set('view engine', 'ejs')
 app.set('views', 'views')
+
 
 
 //Middleware Array
@@ -24,7 +29,9 @@ app.use(middleware)
 
 // app.use('/')
 app.get('/',(req,res)=>{
-    res.send('<h1>SERVER IS RUNNING</h1>')
+
+    res.render('pages/auth/signup', {title:'Create a New Account'})
+    // res.send('<h1>SERVER IS RUNNING</h1>')
 })
 
 const PORT=process.env.PORT||8888
