@@ -9,10 +9,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     background: #fff;
+    font-weight: 700;
 }
 
 .my_container{
-    min-height: 720px;
+    min-height: 680px;
 }
 
 footer{

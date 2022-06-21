@@ -5,9 +5,9 @@ const {
     model
 } = require('mongoose')
 
-const Profile=require('./Profile')
+// const Profile=require('./Profile')
 
-const userSchema = newSchema({
+const userSchema = new Schema({
     username: {
         type: String,
         trim: true,
@@ -25,7 +25,7 @@ const userSchema = newSchema({
     },
     profile: {
         type: Schema.Types.ObjectId,
-        ref: Profile
+        ref: 'Profile'
     }
 }, {
     timestamps: true

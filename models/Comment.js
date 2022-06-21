@@ -2,18 +2,18 @@
 
 const{Schema,model}=require('mongoose')
 
-const Post=require('./Post')
-const User=require('./User')
+// const Post=require('./Post')
+// const User=require('./User')
 
 const commentSchema=newSchema({
     post:{
         type:Schema.Types.ObjectId,
-        ref:Post,
+        ref:'Post',
         required:true
     },
     user:{
         type:Schema.Types.ObjectId,
-        ref:User,
+        ref:'User',
         required:true
     },
     body:{
@@ -29,7 +29,7 @@ const commentSchema=newSchema({
             },
             user:{
                 type:Schema.Types.ObjectId,
-                ref:User,
+                ref:'User',
                 required:true
             },
             createAt:{
