@@ -37,7 +37,7 @@ mongoose.connect(`mongodb+srv://admin:admin24@cluster0.iop1r.mongodb.net/test`, 
         useNewUrlParser: true
     })
     .then(() => {
-        console.log('Database Connected');
+        console.log('Database Connected')
         app.listen(PORT, () => {
             console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
         })
