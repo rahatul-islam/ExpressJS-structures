@@ -14,6 +14,12 @@ const profileSchema = newSchema({
         ref: User,
         required: true
     },
+    name:{
+        type:String,
+        required:true,
+        maxlenght:30,
+        trim:true
+    },
     title: {
         type: String,
         trim: true,
