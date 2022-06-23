@@ -22,11 +22,29 @@ router.post('/validator',
         .withMessage(`Username can not be greater than 15 Charecter`),
         check('email')
         .isEmail()
-        .withMessage('Provide your valid Email')
+        .withMessage('Provide your valid Email'),
+        check('password').custom(value => {
+            if (value.length < 5) {
+                throw new Error('Password must be greater than 5')
+            }
+            return true
+        }),
+        check('confirmPassword').custom((value,{req})=>{
+            if (value !== req.body.password) {
+                throw new Error('Password Does not match')
+            }
+            return true
+        })
     ],
     (req, res, next) => {
         let errors = validationResult(req)
-        console.log(errors)
+
+        const formatter=(error)=> error.msg
+        console.log(errors.isEmpty())
+        console.log(errors.array())
+        console.log(errors.mapped())
+
+        console.log(errors.formatWith(formatter).mapped())
         res.render('playground/signup', {
             title: 'Validator playground'
         })
