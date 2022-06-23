@@ -6,8 +6,9 @@ const mongoose = require('mongoose')
 //Import Routes
 const authRoutes = require('./routes/authRoutes')
 
-
-const app = express()
+//Playground routes
+const validatorRoutes=require('./playground/validator')
+const app = express()      //ToDo: should be removed
 
 //setup View Engine
 app.set('view engine', 'ejs')
@@ -26,6 +27,7 @@ const middleware = [
 app.use(middleware)
 
 app.use('/auth', authRoutes)
+app.use('/playground', validatorRoutes)   //ToDo: should be removed
 
 app.get('/', (req, res) => {
     res.send('<h1>SERVER IS RUNNING</h1>')
