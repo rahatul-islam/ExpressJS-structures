@@ -7,8 +7,9 @@ const mongoose = require('mongoose')
 const authRoutes = require('./routes/authRoutes')
 
 //Playground routes
-const validatorRoutes=require('./playground/validator')
-const app = express()      //ToDo: should be removed
+
+const app = express()  
+   
 
 //setup View Engine
 app.set('view engine', 'ejs')
@@ -27,14 +28,13 @@ const middleware = [
 app.use(middleware)
 
 app.use('/auth', authRoutes)
-app.use('/playground', validatorRoutes)   //ToDo: should be removed
+
 
 app.get('/', (req, res) => {
     res.send('<h1>SERVER IS RUNNING</h1>')
 })
 
 const PORT = process.env.PORT || 8080
-
 mongoose.connect(`mongodb+srv://admin:admin24@cluster0.iop1r.mongodb.net/test`, {
         useNewUrlParser: true
     })
