@@ -5,7 +5,6 @@ const {
     model
 } = require('mongoose')
 
-// const Profile=require('./Profile')
 
 const userSchema = new Schema({
     username: {
