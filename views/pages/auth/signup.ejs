@@ -8,26 +8,43 @@
                 <form action="/auth/signup" method="POST">
                     <div class="form-group mt-3">
                         <label for="username">Enter Your User Name (Must Be Uniq)</label>
-                        <input type="text" name="username" id="username" class="form-control">
+                        <input type="text" name="username" id="username"
+                            class="form-control <%= error.username ? 'is-invalid' :'' %> ">
+                        <div class="invalid-feedback">
+                            <%= error.username && error.username %>
+                        </div>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="email">Enter Your Valid Email</label>
-                        <input type="email" name="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email"
+                            class="form-control <%= error.email ? 'is-invalid':'' %> ">
+                        <div class="invalid-feedback">
+                            <%= error.email && error.email %>
+                        </div>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="password">Enter Strong Password</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="password" id="password"
+                            class="form-control <%= error.password? 'is-invalid':'' %> ">
+                        <div class="invalid-feedback">
+                            <%= error.password && error.password %>
+                        </div>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="confirmPassword">Confirm Your Password</label>
-                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
+                        <input type="password" name="confirmPassword" id="confirmPassword"
+                            class="form-control <%= error.confirmPassword? 'is-invalid':''  %> ">
+                        <div class="invalid-feedback">
+                            <%= error.confirmPassword && error.confirmPassword %>
+                        </div>
                     </div>
                     <input type="submit" value="Sign Up" class="btn btn-primary mt-3">
                 </form>
-                <a href="/auth/login" class="my-3 text-center text-decoration-none">Already have an Account. Log in here.</a>
+                <a href="/auth/login" class="my-3 text-center text-decoration-none">Already have an Account. Log in
+                    here.</a>
             </div>
         </div>
     </div>

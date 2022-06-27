@@ -7,7 +7,7 @@ const errorFormatter=require('../utils/validationErrorFormatter')
 
 exports.signupGetController = (req, res, next) => {
     res.render('pages/auth/signup', {
-        title: 'Create a New Account'
+        title: 'Create a New Account',error:{}
     })
 }
 
@@ -15,7 +15,9 @@ exports.signupPostController = async (req, res, next) => {
 
     let errors=validationResult(req).formatWith(errorFormatter)
     if (!errors.isEmpty()) {
-        return console.log(errors.mapped())
+        return res.render('pages/auth/signup', {
+            title: 'Create a New Account', error: errors.mapped()
+        })
     }
 
     let {
