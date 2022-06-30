@@ -29,8 +29,8 @@
                     <div class="form-group mt-3">
                         <label for="password">Enter Strong Password</label>
                         <input type="password" name="password" id="password"
-                            class="form-control <%= error.password? 'is-invalid':'' %> "
-                            value="<%= value.password?value.password:'' %> ">
+                            class="form-control <%= error.password? 'is-invalid':'' %>"
+                            value="<%=value.password ? value.password:''%> ">
                         <div class="invalid-feedback">
                             <%= error.password && error.password %>
                         </div>
@@ -46,7 +46,7 @@
                     </div>
                     <input type="submit" value="Sign Up" class="btn btn-primary mt-3">
                 </form>
-                <a href="/auth/login" class="my-3 text-center text-decoration-none">Already have an Account. Log in
+                <a href="/auth/login" class="my-3 text-center text-decoration-none">Already have an Account? Log in
                     here.</a>
             </div>
         </div>

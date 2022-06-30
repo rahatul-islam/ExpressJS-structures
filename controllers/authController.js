@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const session = require('express-session')
 const {
     validationResult
 } = require('express-validator')
@@ -60,11 +61,11 @@ exports.signupPostController = async (req, res, next) => {
 }
 
 exports.loginGetController = (req, res, next) => {
-    let isLoggedIn = req.get('Cookie').includes('isLoggedIn=true') ? true : false
+    console.log(req.session.isLoggedIn, req.session.user);
+
     res.render('pages/auth/login', {
         title: 'Log in to your account',
-        error: {},
-        isLoggedIn
+        error: {}
     })
 }
 
@@ -74,19 +75,11 @@ exports.loginPostController = async (req, res, next) => {
         password
     } = req.body
 
-    let isLoggedIn = req.get('Cookie').includes('isLoggedIn=true') ? true : faise
-    res.render('pages/auth/login', {
-        title: 'Log in to your account',
-        error: {},
-        isLoggedIn
-    })
-
     let errors = validationResult(req).formatWith(errorFormatter)
     if (!errors.isEmpty()) {
         return res.render('pages/auth/login', {
             title: 'Log in to your Account',
-            error: errors.mapped(),
-            isLoggedIn
+            error: errors.mapped()
         })
     }
 
@@ -107,11 +100,11 @@ exports.loginPostController = async (req, res, next) => {
             })
         }
 
-        res.setHeader('Set-Cookie', 'isLoggedIn=true')
+        req.session.isLoggedIn = true
+        req.session.user = user
         res.render('/pages/auth/login', {
             title: 'Log in to your account',
-            error: {},
-            isLoggedIn
+            error: {}
         })
     } catch (e) {
         console.log(e)

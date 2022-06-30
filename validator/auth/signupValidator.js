@@ -4,7 +4,6 @@ const {
 
 const User = require('../../models/User')
 
-
 module.exports = [
     body('username')
     .isLength({
@@ -35,13 +34,11 @@ module.exports = [
     body('password')
     .isLength({
         min: 5
-    })
-    .withMessage('Your password must be grater than 5 Charecter'),
+    }).withMessage('Your password must be 5 Charecters'),
     body('conformPassword')
     .isLength({
         min: 5
-    })
-    .withMessage('Your password must be grater than 5 Charecter')
+    }).withMessage('Your password must be 5 Charecters')
     .custom((confirmPassword, {
         req
     }) => {

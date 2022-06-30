@@ -25,13 +25,15 @@ router.post('/validator',
         .isEmail()
         .withMessage('Provide your valid Email')
         .normalizeEmail(),
-        check('password').custom(value =>{
+        check('password').custom(value => {
             if (value.length < 5) {
                 throw new Error('Password must be greater than charecter 5')
             }
             return true
         }),
-        check('confirmPassword').custom((value,{req})=>{
+        check('confirmPassword').custom((value, {
+            req
+        }) => {
             if (value !== req.body.password) {
                 throw new Error('Password Does not matched')
             }
