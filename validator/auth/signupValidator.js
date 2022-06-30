@@ -2,10 +2,10 @@ const {
     body
 } = require('express-validator')
 
-const User=require('../../models/User')
+const User = require('../../models/User')
 
 
-module.exports=[
+module.exports = [
     body('username')
     .isLength({
         min: 5,
@@ -27,7 +27,7 @@ module.exports=[
         let user = await User.findOne({
             email
         })
-        if (email) {
+        if (user) {
             return Promise.reject('Email Already Used')
         }
     })
@@ -46,7 +46,7 @@ module.exports=[
         req
     }) => {
         if (confirmPassword !== req.body.password) {
-            throw new Error('Password not matched')
+            throw new Error('Password Does not matched')
         }
         return true
     })

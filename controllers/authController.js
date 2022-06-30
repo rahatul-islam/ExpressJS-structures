@@ -7,6 +7,7 @@ const User = require('../models/User')
 
 const errorFormatter = require('../utils/validationErrorFormatter')
 
+
 exports.signupGetController = (req, res, next) => {
     res.render('pages/auth/signup', {
         title: 'Create a New Account',
@@ -27,7 +28,11 @@ exports.signupPostController = async (req, res, next) => {
         return res.render('pages/auth/signup', {
             title: 'Create a New Account',
             error: errors.mapped(),
-            value: {username,email,password}
+            value: {
+                username,
+                email,
+                password
+            }
         })
     }
 
@@ -44,7 +49,8 @@ exports.signupPostController = async (req, res, next) => {
         let createdUser = await user.save()
         console.log('User Created Succesfully', createdUser)
         res.render('pages/auth/signup', {
-            title: 'Create a New Account'
+            title: 'Create a New Account',
+            error: {}
         })
     } catch (e) {
         console.log(e)
@@ -54,9 +60,11 @@ exports.signupPostController = async (req, res, next) => {
 }
 
 exports.loginGetController = (req, res, next) => {
+    let isLoggedIn = req.get('Cookie').includes('isLoggedIn=true') ? true : false
     res.render('pages/auth/login', {
         title: 'Log in to your account',
-        error:{}
+        error: {},
+        isLoggedIn
     })
 }
 
@@ -66,16 +74,21 @@ exports.loginPostController = async (req, res, next) => {
         password
     } = req.body
 
+    let isLoggedIn = req.get('Cookie').includes('isLoggedIn=true') ? true : faise
+    res.render('pages/auth/login', {
+        title: 'Log in to your account',
+        error: {},
+        isLoggedIn
+    })
 
     let errors = validationResult(req).formatWith(errorFormatter)
     if (!errors.isEmpty()) {
         return res.render('pages/auth/login', {
             title: 'Log in to your Account',
-            error: errors.mapped()
+            error: errors.mapped(),
+            isLoggedIn
         })
     }
-
-
 
     try {
         let user = await User.findOne({
@@ -94,9 +107,11 @@ exports.loginPostController = async (req, res, next) => {
             })
         }
 
-        console.log('Succesfully Logged in', user)
+        res.setHeader('Set-Cookie', 'isLoggedIn=true')
         res.render('/pages/auth/login', {
-            title: 'Log in to your account'
+            title: 'Log in to your account',
+            error: {},
+            isLoggedIn
         })
     } catch (e) {
         console.log(e)
