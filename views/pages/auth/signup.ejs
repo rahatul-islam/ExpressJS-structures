@@ -30,7 +30,7 @@
                         <label for="password">Enter Strong Password</label>
                         <input type="password" name="password" id="password"
                             class="form-control <%= error.password? 'is-invalid':'' %>"
-                            value="<%=value.password ? value.password:''%> ">
+                            value="<%= value.password?value.password:'' %> ">
                         <div class="invalid-feedback">
                             <%= error.password && error.password %>
                         </div>
@@ -39,7 +39,7 @@
                     <div class="form-group mt-3">
                         <label for="confirmPassword">Confirm Your Password</label>
                         <input type="password" name="confirmPassword" id="confirmPassword"
-                            class="form-control <%= error.confirmPassword? 'is-invalid':''  %> ">
+                            class="form-control <%= error.confirmPassword? 'is-invalid':'' %> ">
                         <div class="invalid-feedback">
                             <%= error.confirmPassword && error.confirmPassword %>
                         </div>
