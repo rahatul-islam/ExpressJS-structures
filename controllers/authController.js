@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
-const session = require('express-session')
+// const session = require('express-session')
 const {
-    validationResult
+    validationResult,req
 } = require('express-validator')
 
 const User = require('../models/User')
@@ -61,7 +61,7 @@ exports.signupPostController = async (req, res, next) => {
 }
 
 exports.loginGetController = (req, res, next) => {
-    console.log(req.session.isLoggedIn, req.session.user);
+    // console.log(req.session.isLoggedIn, req.session.user)
 
     res.render('pages/auth/login', {
         title: 'Log in to your account',
@@ -100,8 +100,8 @@ exports.loginPostController = async (req, res, next) => {
             })
         }
 
-        req.session.isLoggedIn = true
-        req.session.user = user
+        // req.session.isLoggedIn = true
+        // req.session.user = user
         res.render('/pages/auth/login', {
             title: 'Log in to your account',
             error: {}
