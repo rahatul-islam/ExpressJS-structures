@@ -1,0 +1,16 @@
+const User = require('../models/User')
+
+exports.bindWithUserRequest = async () => {
+    return (req, res, next) => {
+        if (!req.session.isLoggedIn) {
+            return next()
+        }
+        try {
+            let user = User.findById(req.session.user._id)
+            req.user = user
+        } catch (e) {
+            console.log(e)
+            next(e)
+        }
+    }
+}
