@@ -1,13 +1,11 @@
-const bcrypt = require('bcrypt')
-// const session = require('express-session')
+const bcrypt=require('bcrypt')
 const {
-    validationResult,req
+    validationResult
 } = require('express-validator')
 
-const User = require('../models/User')
+const User=require('../models/User')
 
 const errorFormatter = require('../utils/validationErrorFormatter')
-
 
 exports.signupGetController = (req, res, next) => {
     res.render('pages/auth/signup', {
@@ -37,7 +35,6 @@ exports.signupPostController = async (req, res, next) => {
         })
     }
 
-
     try {
         let hashedPassword = await bcrypt.hash(password, 11)
 
@@ -61,7 +58,6 @@ exports.signupPostController = async (req, res, next) => {
 }
 
 exports.loginGetController = (req, res, next) => {
-    // console.log(req.session.isLoggedIn, req.session.user)
 
     res.render('pages/auth/login', {
         title: 'Log in to your account',
@@ -78,7 +74,7 @@ exports.loginPostController = async (req, res, next) => {
     let errors = validationResult(req).formatWith(errorFormatter)
     if (!errors.isEmpty()) {
         return res.render('pages/auth/login', {
-            title: 'Log in to your Account',
+            title: 'Log in to your account',
             error: errors.mapped()
         })
     }
@@ -100,9 +96,9 @@ exports.loginPostController = async (req, res, next) => {
             })
         }
 
-        // req.session.isLoggedIn = true
-        // req.session.user = user
-        res.render('/pages/auth/login', {
+
+        console.log('Sucessfully Logged In')
+        res.render('pages/auth/login', {
             title: 'Log in to your account',
             error: {}
         })

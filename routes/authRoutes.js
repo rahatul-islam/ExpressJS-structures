@@ -14,10 +14,10 @@ const {
 
 
 router.get('/signup', signupGetController)
-router.post('/signup', signupValidator, signupPostController)
+router.post('/signup',signupValidator,signupPostController)
 
 router.get('/login', loginGetController)
-router.post('/login',loginValidator, loginPostController)
+router.post('/login',loginValidator,loginPostController)
 
 router.get('/logout', logoutController)
 

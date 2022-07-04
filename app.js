@@ -1,12 +1,10 @@
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-// const session = require('express-session')
 
 //Import Routes
 const authRoutes = require('./routes/authRoutes')
 
-//Playground routes
 
 const app = express()
 
@@ -23,11 +21,6 @@ const middleware = [
         extended: true
     }),
     express.json()
-    // session({
-    //     secret: process.env.SECRET_KEY || 'SECRET_KEY',
-    //     resave: false,
-    //     saveUninitialized: false
-    // })
 ]
 app.use(middleware)
 
@@ -37,7 +30,7 @@ app.get('/', (req, res) => {
     res.send('<h1>SERVER IS RUNNING</h1>')
 })
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 9999
 mongoose.connect(`mongodb+srv://admin:admin24@cluster0.iop1r.mongodb.net/test`, {
         useNewUrlParser: true
     })
@@ -51,8 +44,3 @@ mongoose.connect(`mongodb+srv://admin:admin24@cluster0.iop1r.mongodb.net/test`, 
     .catch(e => {
         return console.log(e)
     })
-
-
-// app.listen(PORT,()=>{
-//     console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
-// })
