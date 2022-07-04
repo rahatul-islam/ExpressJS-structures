@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const session=require('express-session')
 
 //Import Routes
 const authRoutes = require('./routes/authRoutes')
@@ -20,7 +21,12 @@ const middleware = [
     express.urlencoded({
         extended: true
     }),
-    express.json()
+    express.json(),
+    session({
+        secret:process.env.SECRET_KEY||'SECRET_KEY',
+        resave:false,
+        saveUninitialized:false
+    })
 ]
 app.use(middleware)
 
