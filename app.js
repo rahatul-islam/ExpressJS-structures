@@ -9,7 +9,7 @@ const authRoutes = require('./routes/authRoutes')
 
 //Import middleware
 const {bindWithUserRequest}=require('./middleware/authMiddleware')
-
+const setLocals=require('./middleware/setLocals')
 
 const MONGODB_URI=`mongodb+srv://admin:admin24@cluster0.iop1r.mongodb.net/test`
 const store = new MongoDBStore({
@@ -39,7 +39,8 @@ const middleware = [
         saveUninitialized:false,
         store:store
     }),
-    bindWithUserRequest
+    bindWithUserRequest,
+    setLocals
 ]
 app.use(middleware)
 
