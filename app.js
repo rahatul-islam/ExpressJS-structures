@@ -6,6 +6,7 @@ const MongoDBStore = require('connect-mongodb-session')(session)
 
 //Import Routes
 const authRoutes = require('./routes/authRoutes')
+const dashboardRoutes=require('./routes/dashboardRoute')
 
 //Import middleware
 const {bindWithUserRequest}=require('./middleware/authMiddleware')
@@ -39,12 +40,13 @@ const middleware = [
         saveUninitialized:false,
         store:store
     }),
-    bindWithUserRequest,
-    setLocals
+    bindWithUserRequest(),
+    setLocals()
 ]
 app.use(middleware)
 
 app.use('/auth', authRoutes)
+app.use('/dashboard', dashboardRoutes)
 
 app.get('/', (req, res) => {
     res.send('<h1>SERVER IS RUNNING</h1>')

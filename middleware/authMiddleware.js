@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
-exports.bindWithUserRequest = async () => {
-    return (req, res, next) => {
+exports.bindWithUserRequest = () => {
+    return async(req, res, next) => {
         if (!req.session.isLoggedIn) {
             return next()
         }
